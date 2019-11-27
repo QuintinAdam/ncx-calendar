@@ -1,14 +1,16 @@
 %nav.navbar.navbar-dark.bg-primary.navbar-expand-lg
   = link_to 'NC X Calendar', root_path, class: 'navbar-brand'
-  %button.navbar-toggler{"aria-controls" => "navbarTogglerDemo02", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarTogglerDemo02", "data-toggle" => "collapse", :type => "button"}
+  %button.navbar-toggler{"aria-controls" => "navbarToggler", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarToggler", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
-  #navbarTogglerDemo02.collapse.navbar-collapse
+  #navbarToggler.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto.mt-2.mt-lg-0
       - if current_user
         %li.nav-item
-          = link_to 'Logout', destroy_user_session_url, method: 'delete', class: 'nav-link'
+          = link_to 'Logout', destroy_user_session_url, method: 'delete', class: 'nav-link', style: 'color: white;'
       - else
         %li.nav-item
-          = link_to "Log In", new_session_path("user"), class: 'nav-link'
+          = link_to "Log In", new_user_session_path, class: 'nav-link', style: 'color: white;'
         %li.nav-item
-          = link_to "Register", new_user_registration_path("user"), class: 'nav-link'
+          = link_to "Register", new_user_registration_path, class: 'nav-link', style: 'color: white;'
+-if current_user
+  #signed_in{data: {uid: current_user.id}}

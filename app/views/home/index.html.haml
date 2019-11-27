@@ -1,85 +1,94 @@
-#menu
-  %span.dropdown
-    %button#dropdownMenu-calendarType.btn.btn-default.btn-sm.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", type: "button"}
-      %i#calendarTypeIcon.calendar-icon.ic_view_week{style: "margin-right: 4px;"}
-      = succeed "\u{a0}" do
-        %span#calendarTypeName Weekly
-      %i.calendar-icon.tui-full-calendar-dropdown-arrow
-    %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu-calendarType", role: "menu"}
-      %li{role: "presentation"}
-        %a.dropdown-menu-title{"data-action" => "toggle-daily", role: "menuitem"}
+#lnb
+  %ul.nav.nav-tabs#menu#menu-navi
+    %li.nav-item.dropdown
+      %button#dropdownMenu-calendarType.btn.btn-default.btn-sm.dropdown-toggle.nav-link{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", type: "button"}
+        %i#calendarTypeIcon.calendar-icon.ic_view_week{style: "margin-right: 4px;"}
+        = succeed "\u{a0}" do
+          %span#calendarTypeName Weekly
+        %i.calendar-icon.tui-full-calendar-dropdown-arrow
+      .dropdown-menu{"aria-labelledby" => "dropdownMenu-calendarType", role: "menu"}
+        %a.dropdown-menu-title.dropdown-item{"data-action" => "toggle-daily", role: "menuitem"}
           %i.calendar-icon.ic_view_day>
           Daily
-      %li{role: "presentation"}
-        %a.dropdown-menu-title{"data-action" => "toggle-weekly", role: "menuitem"}
+        %a.dropdown-menu-title.dropdown-item{"data-action" => "toggle-weekly", role: "menuitem"}
           %i.calendar-icon.ic_view_week>
           Weekly
-      %li{role: "presentation"}
-        %a.dropdown-menu-title{"data-action" => "toggle-weeks2", role: "menuitem"}
+        %a.dropdown-menu-title.dropdown-item{"data-action" => "toggle-weeks2", role: "menuitem"}
           %i.calendar-icon.ic_view_week>
           2 weeks
-  %span#menu-navi
-    %button.btn.btn-default.btn-sm.move-today{"data-action" => "move-today", type: "button"} Today
-    %button.btn.btn-default.btn-sm.move-day{"data-action" => "move-prev", type: "button"}
-      %i.calendar-icon.ic-arrow-line-left{"data-action" => "move-prev"} <
-    %button.btn.btn-default.btn-sm.move-day{"data-action" => "move-next", type: "button"}
-      %i.calendar-icon.ic-arrow-line-right{"data-action" => "move-next"} >
-  %span#renderRange.render-range 2019.11.24 ~  11.30
-
-
-#calendar{style: "height: 800px;"}
-
-#lnb
-  .lnb-new-schedule
-    %button#btn-new-schedule.btn.btn-default.btn-block.lnb-new-schedule-btn{"data-toggle" => "modal", :type => "button"}
-      New schedule
-  #lnb-calendars.lnb-calendars
+    -# %ul.nav
+    %li.nav-item
+      %button.btn.btn-default.btn-sm.move-today.nav-link{"data-action" => "move-today", type: "button"} Today
+    %li.nav-item
+      %button.btn.btn-default.btn-sm.move-day.nav-link{"data-action" => "move-prev", type: "button"}
+        %i.calendar-icon.ic-arrow-line-left{"data-action" => "move-prev"} <
+    %li.nav-item
+      %button.btn.btn-default.btn-sm.move-day.nav-link{"data-action" => "move-next", type: "button"}
+        %i.calendar-icon.ic-arrow-line-right{"data-action" => "move-next"} >
+    %li.nav-item.active
+      %span#renderRange.render-range.nav-link.active
+    %li.nav-item
+      %a.nav-link{"aria-controls" => "collapseCategories", "aria-expanded" => "false", "data-toggle" => "collapse", href: "#collapseCategories", role: "button"}
+        Filter
+    - if current_user
+      %li.nav-item.lnb-new-schedule
+        %button#btn-new-schedule.nav-link.btn.btn-success.lnb-new-schedule-btn{"data-toggle" => "modal", type: "button"}
+          + New Event
+    - else
+      %li.nav-item
+        = link_to 'New Event', new_session_path("user"), class: 'btn btn-success nav-link'
+.collapse#collapseCategories
+  #lnb-calendars.lnb-calendars.container
     %div
       .lnb-calendars-item
         %label
-          %input.tui-full-calendar-checkbox-square{:checked => "checked", :type => "checkbox", :value => "all"}/
+          %input.tui-full-calendar-checkbox-square{checked: "checked", type: "checkbox", value: "all"}/
           %span
           %strong View all
     #calendarList.lnb-calendars-d1
-      .lnb-calendars-item
-        %label{:style => ""}
-          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "1"}/
-          %span{:style => "border-color: rgb(158, 95, 255); background-color: rgb(158, 95, 255);"}
-          %span My Calendar
-      .lnb-calendars-item
-        %label{:style => ""}
-          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "2"}/
-          %span{:style => "border-color: rgb(0, 169, 255); background-color: rgb(0, 169, 255);"}
-          %span Company
-      .lnb-calendars-item
-        %label{:style => ""}
-          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "3"}/
-          %span{:style => "border-color: rgb(255, 85, 131); background-color: rgb(255, 85, 131);"}
-          %span Family
-      .lnb-calendars-item
-        %label{:style => ""}
-          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "4"}/
-          %span{:style => "border-color: rgb(3, 189, 158); background-color: rgb(3, 189, 158);"}
-          %span Friend
-      .lnb-calendars-item
-        %label{:style => ""}
-          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "5"}/
-          %span{:style => "border-color: rgb(187, 220, 0); background-color: rgb(187, 220, 0);"}
-          %span Travel
-      .lnb-calendars-item
-        %label{:style => ""}
-          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "6"}/
-          %span{:style => "border-color: rgb(157, 157, 157); background-color: rgb(157, 157, 157);"}
-          %span etc
-      .lnb-calendars-item
-        %label{:style => ""}
-          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "7"}/
-          %span{:style => "border-color: rgb(255, 187, 59); background-color: rgb(255, 187, 59);"}
-          %span Birthdays
-      .lnb-calendars-item
-        %label{:style => ""}
-          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "8"}/
-          %span{:style => "border-color: rgb(255, 64, 64); background-color: rgb(255, 64, 64);"}
-          %span National Holidays
-  .lnb-footer
+#calendar{style: "height: 85vh"}
+-# .container
+-#   %p If you find any issues, tell Quintin
+
+-# .lnb-calendars-item
+-#   %label{style: ""}
+-#     %input.tui-full-calendar-checkbox-round{checked: "checked", type: "checkbox", value: "general"}/
+-#     %span{style: "border-color: #{CC[:general][:b]}; background-color: #{CC[:general][:bg]}; font: #{CC[:general][:font]}"}
+-#     %span General
+-# .lnb-calendars-item
+-#   %label{style: ""}
+-#     %input.tui-full-calendar-checkbox-round{checked: "checked", type: "checkbox", value: "official"}/
+-#     %span{style: "border-color: #{CC[:official][:b]}; background-color: #{CC[:official][:bg]}; font: #{CC[:official][:font]}"}
+-#     %span Official
+-# .lnb-calendars-item
+-#   %label{style: ""}
+-#     %input.tui-full-calendar-checkbox-round{checked: "checked", type: "checkbox", value: "workshop"}/
+-#     %span{style: "border-color: #{CC[:workshop][:b]}; background-color: #{CC[:workshop][:bg]}; font: #{CC[:workshop][:font]}"}
+-#     %span Workshop
+-# .lnb-calendars-item
+-#   %label{style: ""}
+-#     %input.tui-full-calendar-checkbox-round{checked: "checked", type: "checkbox", value: "fitness"}/
+-#     %span{style: "border-color: #{CC[:fitness][:b]}; background-color: #{CC[:fitness][:bg]}; font: #{CC[:fitness][:font]}"}
+-#     %span Fitness
+-# .lnb-calendars-item
+-#   %label{style: ""}
+-#     %input.tui-full-calendar-checkbox-round{checked: "checked", type: "checkbox", value: "meetup"}/
+-#     %span{style: "border-color: #{CC[:meetup][:b]}; background-color: #{CC[:meetup][:bg]}; font: #{CC[:meetup][:font]}"}
+-#     %span Meetup
+-# .lnb-calendars-item
+-#   %label{style: ""}
+-#     %input.tui-full-calendar-checkbox-round{checked: "checked", type: "checkbox", value: "birthday"}/
+-#     %span{style: "border-color: #{CC[:birthday][:b]}; background-color: #{CC[:birthday][:bg]}; font: #{CC[:birthday][:font]}"}
+-#     %span Birthdays
+-# .lnb-calendars-item
+-#   %label{style: ""}
+-#     %input.tui-full-calendar-checkbox-round{checked: "checked", type: "checkbox", value: "party"}/
+-#     %span{style: "border-color: #{CC[:party][:b]}; background-color: #{CC[:party][:bg]}; font: #{CC[:party][:font]}"}
+-#     %span Party
+
+-# .lnb-calendars-item
+-#   %label{style: ""}
+-#     %input.tui-full-calendar-checkbox-round{checked: "checked", type: "checkbox", value: "5"}/
+-#     %span{style: "border-color: #{CC[:offical][:b]}; background-color: #{CC[:offical][:bg]}; font: #{CC[:offical][:font]}"}
+-#     %span Travel
 

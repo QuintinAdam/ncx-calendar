@@ -1,11 +1,9 @@
 #app-alerts
   - flash.each do |flash_type, message|
     - if message.is_a?(String)
-      %div{class: "alert alert-dismissible alert-icon alert-#{flash_class(flash_type)}", role: "alert"}
-        .icon
-          %span.fa{class: flash_icon(flash_type)}
-        .message
-          %button.close.md-close{"aria-label" => "Close", "data-dismiss" => "modal", type: "button"}
-            %span{"aria-hidden" => "true"} &#215;
-          = content_tag :div, message, class: "flash_#{flash_type}"
+      %div{class: "alert alert-dismissible alert-icon alert-info fade show", role: "alert"}
+        = content_tag :div, message, class: "flash_#{flash_type}"
+        %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+          %span{"aria-hidden" => "true"} &#215;
+
   - flash.discard

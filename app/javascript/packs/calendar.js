@@ -42,109 +42,100 @@ function hexToRGBA(hex) {
 
 (function() {
     var calendar;
-    var id = 0;
+    // var id = 0;
 
     calendar = new CalendarInfo();
-    id += 1;
-    calendar.id = String(id);
-    calendar.name = 'My Calendar';
+    // id += 1;
+    calendar.id = 'general';
+    calendar.name = 'General';
     calendar.color = '#ffffff';
-    calendar.bgColor = '#9e5fff';
-    calendar.dragBgColor = '#9e5fff';
-    calendar.borderColor = '#9e5fff';
+    calendar.bgColor = '#9D9D9D';
+    calendar.dragBgColor = '#9D9D9D';
+    calendar.borderColor = '#9D9D9D';
     addCalendar(calendar);
 
     calendar = new CalendarInfo();
-    id += 1;
-    calendar.id = String(id);
-    calendar.name = 'Company';
+    // id += 1;
+    calendar.id = 'official';
+    calendar.name = 'Official';
     calendar.color = '#ffffff';
-    calendar.bgColor = '#00a9ff';
-    calendar.dragBgColor = '#00a9ff';
-    calendar.borderColor = '#00a9ff';
+    calendar.bgColor = '#044162';
+    calendar.dragBgColor = '#044162';
+    calendar.borderColor = '#044162';
     addCalendar(calendar);
 
     calendar = new CalendarInfo();
-    id += 1;
-    calendar.id = String(id);
-    calendar.name = 'Family';
+    // id += 1;
+    calendar.id = 'workshop';
+    calendar.name = 'Workshop';
     calendar.color = '#ffffff';
-    calendar.bgColor = '#ff5583';
-    calendar.dragBgColor = '#ff5583';
-    calendar.borderColor = '#ff5583';
+    calendar.bgColor = '#28A9FF';
+    calendar.dragBgColor = '#28A9FF';
+    calendar.borderColor = '#28A9FF';
     addCalendar(calendar);
 
     calendar = new CalendarInfo();
-    id += 1;
-    calendar.id = String(id);
-    calendar.name = 'Friend';
+    // id += 1;
+    calendar.id = 'fitness';
+    calendar.name = 'Fitness';
     calendar.color = '#ffffff';
-    calendar.bgColor = '#03bd9e';
-    calendar.dragBgColor = '#03bd9e';
-    calendar.borderColor = '#03bd9e';
+    calendar.bgColor = '#FF5583';
+    calendar.dragBgColor = '#FF5583';
+    calendar.borderColor = '#FF5583';
     addCalendar(calendar);
 
     calendar = new CalendarInfo();
-    id += 1;
-    calendar.id = String(id);
-    calendar.name = 'Travel';
+    // id += 1;
+    calendar.id = 'meetup';
+    calendar.name = 'Meetup';
     calendar.color = '#ffffff';
-    calendar.bgColor = '#bbdc00';
-    calendar.dragBgColor = '#bbdc00';
-    calendar.borderColor = '#bbdc00';
+    calendar.bgColor = '#03BD9E';
+    calendar.dragBgColor = '#03BD9E';
+    calendar.borderColor = '#03BD9E';
     addCalendar(calendar);
 
     calendar = new CalendarInfo();
-    id += 1;
-    calendar.id = String(id);
-    calendar.name = 'etc';
+    // id += 1;
+    calendar.id = 'birthday';
+    calendar.name = 'Birthday';
     calendar.color = '#ffffff';
-    calendar.bgColor = '#9d9d9d';
-    calendar.dragBgColor = '#9d9d9d';
-    calendar.borderColor = '#9d9d9d';
+    calendar.bgColor = '#FFBB3B';
+    calendar.dragBgColor = '#FFBB3B';
+    calendar.borderColor = '#FFBB3B';
     addCalendar(calendar);
 
     calendar = new CalendarInfo();
-    id += 1;
-    calendar.id = String(id);
-    calendar.name = 'Birthdays';
+    // id += 1;
+    calendar.id = 'party';
+    calendar.name = 'Party';
     calendar.color = '#ffffff';
-    calendar.bgColor = '#ffbb3b';
-    calendar.dragBgColor = '#ffbb3b';
-    calendar.borderColor = '#ffbb3b';
+    calendar.bgColor = '#FF4040';
+    calendar.dragBgColor = '#FF4040';
+    calendar.borderColor = '#00FF00';
     addCalendar(calendar);
 
-    calendar = new CalendarInfo();
-    id += 1;
-    calendar.id = String(id);
-    calendar.name = 'National Holidays';
-    calendar.color = '#ffffff';
-    calendar.bgColor = '#ff4040';
-    calendar.dragBgColor = '#ff4040';
-    calendar.borderColor = '#ff4040';
-    addCalendar(calendar);
+    // calendar = new CalendarInfo();
+    // // id += 1;
+    // calendar.id = String(id);
+    // calendar.name = 'National Holidays';
+    // calendar.color = '#ffffff';
+    // calendar.bgColor = '#ff4040';
+    // calendar.dragBgColor = '#ff4040';
+    // calendar.borderColor = '#ff4040';
+    // addCalendar(calendar);
 })();
 
 
-// ########################3
-
-'use strict';
-
-/*eslint-disable*/
+// ########################
 
 var ScheduleList = [];
-
-var SCHEDULE_CATEGORY = [
-    'milestone',
-    'task'
-];
 
 function ScheduleInfo() {
     this.id = null;
     this.calendarId = null;
 
     this.title = null;
-    this.body = null;
+    this.body = 'Info: ';
     this.isAllday = false;
     this.start = null;
     this.end = null;
@@ -182,121 +173,10 @@ function ScheduleInfo() {
     };
 }
 
-// function generateTime(schedule, renderStart, renderEnd) {
-//     var startDate = moment(renderStart.getTime())
-//     var endDate = moment(renderEnd.getTime());
-//     var diffDate = endDate.diff(startDate, 'days');
 
-//     schedule.isAllday = false;
-//     if (schedule.isAllday) {
-//         schedule.category = 'allday';
-//     } else if (chance.bool({likelihood: 30})) {
-//         schedule.category = SCHEDULE_CATEGORY[chance.integer({min: 0, max: 1})];
-//         if (schedule.category === SCHEDULE_CATEGORY[1]) {
-//             schedule.dueDateClass = 'morning';
-//         }
-//     } else {
-//         schedule.category = 'time';
-//     }
-
-//     startDate.add(chance.integer({min: 0, max: diffDate}), 'days');
-//     startDate.hours(chance.integer({min: 0, max: 23}))
-//     startDate.minutes(chance.bool() ? 0 : 30);
-//     schedule.start = startDate.toDate();
-
-//     endDate = moment(startDate);
-//     if (schedule.isAllday) {
-//         endDate.add(chance.integer({min: 0, max: 3}), 'days');
-//     }
-
-//     schedule.end = endDate
-//         .add(chance.integer({min: 1, max: 4}), 'hour')
-//         .toDate();
-
-//     if (!schedule.isAllday && chance.bool({likelihood: 20})) {
-//         schedule.goingDuration = chance.integer({min: 30, max: 120});
-//         schedule.comingDuration = chance.integer({min: 30, max: 120});;
-
-//         if (chance.bool({likelihood: 50})) {
-//             schedule.end = schedule.start;
-//         }
-//     }
-// }
-
-function generateNames() {
-    var names = [];
-    var i = 0;
-    var length = chance.integer({min: 1, max: 10});
-
-    for (; i < length; i += 1) {
-        names.push(chance.name());
-    }
-
-    return names;
-}
-
-function generateRandomSchedule(calendar, renderStart, renderEnd) {
-    var schedule = new ScheduleInfo();
-
-    schedule.id = chance.guid();
-    schedule.calendarId = calendar.id;
-
-    schedule.title = chance.sentence({words: 3});
-    schedule.body = chance.bool({likelihood: 20}) ? chance.sentence({words: 10}) : '';
-    schedule.isReadOnly = chance.bool({likelihood: 20});
-    // generateTime(schedule, renderStart, renderEnd);
-
-    schedule.isPrivate = chance.bool({likelihood: 10});
-    schedule.location = chance.address();
-    schedule.attendees = chance.bool({likelihood: 70}) ? generateNames() : [];
-    schedule.recurrenceRule = chance.bool({likelihood: 20}) ? 'repeated events' : '';
-    schedule.state = chance.bool({likelihood: 20}) ? 'Free' : 'Busy';
-    schedule.color = calendar.color;
-    schedule.bgColor = calendar.bgColor;
-    schedule.dragBgColor = calendar.dragBgColor;
-    schedule.borderColor = calendar.borderColor;
-
-    if (schedule.category === 'milestone') {
-        schedule.color = schedule.bgColor;
-        schedule.bgColor = 'transparent';
-        schedule.dragBgColor = 'transparent';
-        schedule.borderColor = 'transparent';
-    }
-
-    schedule.raw.memo = chance.sentence();
-    schedule.raw.creator.name = chance.name();
-    schedule.raw.creator.avatar = chance.avatar();
-    schedule.raw.creator.company = chance.company();
-    schedule.raw.creator.email = chance.email();
-    schedule.raw.creator.phone = chance.phone();
-
-    if (chance.bool({ likelihood: 20 })) {
-        var travelTime = chance.minute();
-        schedule.goingDuration = travelTime;
-        schedule.comingDuration = travelTime;
-    }
-
-    ScheduleList.push(schedule);
-}
-
-// function generateSchedule(viewName, renderStart, renderEnd) {
-//     ScheduleList = [];
-//     CalendarList.forEach(function(calendar) {
-//         var i = 0, length = 10;
-//         if (viewName === 'month') {
-//             length = 3;
-//         } else if (viewName === 'day') {
-//             length = 4;
-//         }
-//         for (; i < length; i += 1) {
-//             generateRandomSchedule(calendar, renderStart, renderEnd);
-//         }
-//     });
-// }
+// ########################
 
 
-
-// ########################3
 window.calendarInit = function(window, Calendar) {
     var cal, resizeThrottled;
     var useCreationPopup = true;
@@ -304,10 +184,12 @@ window.calendarInit = function(window, Calendar) {
     var datePicker, selectedCalendar;
 
     cal = new Calendar('#calendar', {
-        defaultView: 'week',
+        defaultView: 'day',
         taskView: false,
         usageStatistics: false,
         disableClick: true,
+        disableDblClick: false,
+        isReadOnly: !document.getElementById("signed_in"),
         useCreationPopup: useCreationPopup,
         useDetailPopup: useDetailPopup,
         calendars: CalendarList,
@@ -317,7 +199,10 @@ window.calendarInit = function(window, Calendar) {
             },
             time: function(schedule) {
                 return getTimeTemplate(schedule, false);
-            }
+            },
+            popupDetailBody: function(schedule) {
+                return 'Body : ' + schedule.body;
+            },
         }
     });
 
@@ -339,19 +224,19 @@ window.calendarInit = function(window, Calendar) {
         'beforeUpdateSchedule': function(e) {
             var schedule = e.schedule;
             var changes = e.changes;
-
-            console.log('beforeUpdateSchedule', e);
-
+            // console.log('beforeUpdateSchedule', e);
+            saveUpdateSchedule(schedule.id, changes);
             cal.updateSchedule(schedule.id, schedule.calendarId, changes);
             refreshScheduleVisibility();
         },
         'beforeDeleteSchedule': function(e) {
             console.log('beforeDeleteSchedule', e);
+            appDeleteSchedule(e.schedule.id);
             cal.deleteSchedule(e.schedule.id, e.schedule.calendarId);
         },
         'afterRenderSchedule': function(e) {
             var schedule = e.schedule;
-            // var element = cal.getElement(schedule.id, schedule.calendarId);
+            var element = cal.getElement(schedule.id, schedule.calendarId);
             console.log('afterRenderSchedule', element);
         },
         'clickTimezonesCollapseBtn': function(timezonesCollapsed) {
@@ -398,7 +283,12 @@ window.calendarInit = function(window, Calendar) {
             } else if (schedule.location) {
                 html.push('<span class="calendar-font-icon ic-location-b"></span>');
             }
-            html.push(' ' + schedule.title);
+            console.log(schedule)
+            if (schedule.raw.host) {
+              html.push(' ' + schedule.title + '<br/>Hosted by ' + schedule.raw.host);
+            } else {
+              html.push(' ' + schedule.title);
+            }
         }
 
         return html.join('');
@@ -555,8 +445,10 @@ window.calendarInit = function(window, Calendar) {
     }
     function saveNewSchedule(scheduleData) {
         var calendar = scheduleData.calendar || findCalendar(scheduleData.calendarId);
+        console.log('scheduleData')
+        console.log(scheduleData)
         var schedule = {
-            // id: ,
+            id: scheduleData.id,
             title: scheduleData.title,
             isAllDay: scheduleData.isAllDay,
             start: scheduleData.start,
@@ -582,15 +474,42 @@ window.calendarInit = function(window, Calendar) {
         console.log(schedule);
         var fd = new FormData();
         fd.append("event", JSON.stringify(schedule));
+        var user_id = document.getElementById("signed_in").dataset.uid;
+
         Rails.ajax({
           type: "POST",
-          url: "/events",
+          url: "/events.json?user_id=" + user_id,
           data: fd,
           success: function(data) {console.log('success')},
           error: function(data) {console.log('error')}
         });
         cal.createSchedules([schedule]);
         refreshScheduleVisibility();
+    }
+
+    function saveUpdateSchedule(schedule_id, changes) {
+        var fd = new FormData();
+        fd.append("event", JSON.stringify(changes));
+        var user_id = document.getElementById("signed_in").dataset.uid;
+        Rails.ajax({
+          type: "PATCH",
+          url: "/events/" + schedule_id +".json?user_id=" + user_id,
+          data: fd,
+          success: function(data) {console.log('success')},
+          error: function(data) {console.log('error')}
+        });
+        // cal.createSchedules([schedule]);
+        // refreshScheduleVisibility();
+    }
+
+    function appDeleteSchedule(schedule_id) {
+      var user_id = document.getElementById("signed_in").dataset.uid;
+      Rails.ajax({
+        type: "DELETE",
+        url: "/events/" + schedule_id +".json?user_id=" + user_id,
+        success: function(data) {console.log('success')},
+        error: function(data) {console.log('error')}
+      });
     }
 
     function onChangeCalendars(e) {
@@ -679,12 +598,12 @@ window.calendarInit = function(window, Calendar) {
         var viewName = cal.getViewName();
         var html = [];
         if (viewName === 'day') {
-            html.push(moment(cal.getDate().getTime()).format('YYYY.MM.DD'));
+            html.push(moment(cal.getDate().getTime()).format('MM.DD'));
         } else if (viewName === 'month' &&
             (!options.month.visibleWeeksCount || options.month.visibleWeeksCount > 4)) {
-            html.push(moment(cal.getDate().getTime()).format('YYYY.MM'));
+            html.push(moment(cal.getDate().getTime()).format('MM'));
         } else {
-            html.push(moment(cal.getDateRangeStart().getTime()).format('YYYY.MM.DD'));
+            html.push(moment(cal.getDateRangeStart().getTime()).format('MM.DD'));
             html.push(' ~ ');
             html.push(moment(cal.getDateRangeEnd().getTime()).format(' MM.DD'));
         }
