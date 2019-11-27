@@ -201,7 +201,7 @@ window.calendarInit = function(window, Calendar) {
                 return getTimeTemplate(schedule, false);
             },
             popupDetailBody: function(schedule) {
-                return 'Body : ' + schedule.body;
+                return 'Info : ' + schedule.body;
             },
         }
     });
