@@ -1,0 +1,85 @@
+#menu
+  %span.dropdown
+    %button#dropdownMenu-calendarType.btn.btn-default.btn-sm.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", type: "button"}
+      %i#calendarTypeIcon.calendar-icon.ic_view_week{style: "margin-right: 4px;"}
+      = succeed "\u{a0}" do
+        %span#calendarTypeName Weekly
+      %i.calendar-icon.tui-full-calendar-dropdown-arrow
+    %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu-calendarType", role: "menu"}
+      %li{role: "presentation"}
+        %a.dropdown-menu-title{"data-action" => "toggle-daily", role: "menuitem"}
+          %i.calendar-icon.ic_view_day>
+          Daily
+      %li{role: "presentation"}
+        %a.dropdown-menu-title{"data-action" => "toggle-weekly", role: "menuitem"}
+          %i.calendar-icon.ic_view_week>
+          Weekly
+      %li{role: "presentation"}
+        %a.dropdown-menu-title{"data-action" => "toggle-weeks2", role: "menuitem"}
+          %i.calendar-icon.ic_view_week>
+          2 weeks
+  %span#menu-navi
+    %button.btn.btn-default.btn-sm.move-today{"data-action" => "move-today", type: "button"} Today
+    %button.btn.btn-default.btn-sm.move-day{"data-action" => "move-prev", type: "button"}
+      %i.calendar-icon.ic-arrow-line-left{"data-action" => "move-prev"} <
+    %button.btn.btn-default.btn-sm.move-day{"data-action" => "move-next", type: "button"}
+      %i.calendar-icon.ic-arrow-line-right{"data-action" => "move-next"} >
+  %span#renderRange.render-range 2019.11.24 ~  11.30
+
+
+#calendar{style: "height: 800px;"}
+
+#lnb
+  .lnb-new-schedule
+    %button#btn-new-schedule.btn.btn-default.btn-block.lnb-new-schedule-btn{"data-toggle" => "modal", :type => "button"}
+      New schedule
+  #lnb-calendars.lnb-calendars
+    %div
+      .lnb-calendars-item
+        %label
+          %input.tui-full-calendar-checkbox-square{:checked => "checked", :type => "checkbox", :value => "all"}/
+          %span
+          %strong View all
+    #calendarList.lnb-calendars-d1
+      .lnb-calendars-item
+        %label{:style => ""}
+          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "1"}/
+          %span{:style => "border-color: rgb(158, 95, 255); background-color: rgb(158, 95, 255);"}
+          %span My Calendar
+      .lnb-calendars-item
+        %label{:style => ""}
+          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "2"}/
+          %span{:style => "border-color: rgb(0, 169, 255); background-color: rgb(0, 169, 255);"}
+          %span Company
+      .lnb-calendars-item
+        %label{:style => ""}
+          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "3"}/
+          %span{:style => "border-color: rgb(255, 85, 131); background-color: rgb(255, 85, 131);"}
+          %span Family
+      .lnb-calendars-item
+        %label{:style => ""}
+          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "4"}/
+          %span{:style => "border-color: rgb(3, 189, 158); background-color: rgb(3, 189, 158);"}
+          %span Friend
+      .lnb-calendars-item
+        %label{:style => ""}
+          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "5"}/
+          %span{:style => "border-color: rgb(187, 220, 0); background-color: rgb(187, 220, 0);"}
+          %span Travel
+      .lnb-calendars-item
+        %label{:style => ""}
+          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "6"}/
+          %span{:style => "border-color: rgb(157, 157, 157); background-color: rgb(157, 157, 157);"}
+          %span etc
+      .lnb-calendars-item
+        %label{:style => ""}
+          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "7"}/
+          %span{:style => "border-color: rgb(255, 187, 59); background-color: rgb(255, 187, 59);"}
+          %span Birthdays
+      .lnb-calendars-item
+        %label{:style => ""}
+          %input.tui-full-calendar-checkbox-round{:checked => "checked", :type => "checkbox", :value => "8"}/
+          %span{:style => "border-color: rgb(255, 64, 64); background-color: rgb(255, 64, 64);"}
+          %span National Holidays
+  .lnb-footer
+
